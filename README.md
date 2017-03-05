@@ -15,19 +15,18 @@
 
 ```
 buildozer init
-```
-\#生成buildozer.spec配置文件，这个配置文件包括各种apk的配置，这里我对原始的bulldozer.spec配置文件做了修改（原始spec文件位于/usr/local/lib/python2.7/dist-packages/buildozer/default.spec/default.spec）修改的内容有：
+#生成buildozer.spec配置文件，这个配置文件包括各种apk的配置，这里我对原始的bulldozer.spec配置文件做了修改（原始spec文件位于/usr/local/lib/python2.7/dist-packages/buildozer/default.spec/default.spec）修改的内容有：
 注释掉ln16，默认包含项目目录下的所有文件
 ln39，增加python2，没有这项打包时会出现找不到hostPython错误。
 ln180，改为2
 ln183，改为0
-
+```
 
 
 ```
-buildozer android_new debug     \#生成debug版本apk
+buildozer android_new debug     #生成debug版本apk
 
-buildozer android_new release   \#生成release版本apk
+buildozer android_new release   #生成release版本apk
 ```
 
 如果有其他错误或者完善建议欢迎issue
