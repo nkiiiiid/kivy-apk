@@ -1,5 +1,9 @@
 打包环境下载地址 http://pan.baidu.com/s/1gfgeOT1
 
+Vbox4.3.12下载地址 https://pan.baidu.com/s/1c2Ol81E
+
+vbox4.3.12 Extension pack下载地址 https://pan.baidu.com/s/1hsspuIC
+
 这里对这个打包apk的环境做下说明，以前那个版本的环境没有写说明结果发现确实不妥，还是交待下应该交待的东西(～￣▽￣)～
 
 运行环境推荐vbox 4.3.12，当然其他版本的vbox也是可以的。
