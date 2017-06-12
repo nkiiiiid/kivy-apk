@@ -7,7 +7,7 @@
 
 
 ## 0x00 系统配置
-***
+
 
 打包环境下载地址 http://pan.baidu.com/s/1slweL8T
 
@@ -25,7 +25,6 @@ vbox4.3.12 Extension pack下载地址 https://pan.baidu.com/s/1hsspuIC
 
 
 ## 0x01 打包
-***
 
 
 #### 打包命令
@@ -65,14 +64,14 @@ vbox4.3.12 Extension pack下载地址 https://pan.baidu.com/s/1hsspuIC
 ```
 
 ## 0x02 py35运行代码
-***
+
 ```
 python3  main.py
 ```
 
 
 ## 0x03 更新日志
-***
+
 
 * 使用p4a取代buildozer
 
@@ -82,15 +81,15 @@ python3  main.py
 
 
 ## 0x04 说明
-***
+
 这个打包工具的更新得到了@校长叫我起床 巨佬的大力帮助，在此表示感谢。另外这个工具的更新意见来自目前国内最大的kivy群（310972838）众多群友。欢迎大家使用并将发现的bug和不足告诉我，我会尽量修复。打包环境搭建是个苦差事，谈不上什么技术含量，但是需要足够的耐心和灵光一现的运气。如果你想独自搭建环境，我建议你先通读下PythonforAndroid文档，对每个步骤都反复阅读几遍，不要在搭建过程中遗漏步骤，发现问题先谷歌，谷歌不到的就择日再搭建。
 
 <img src="http://i.imgur.com/CY76Gaj.jpg" width = "300" height = "150" alt="萌新三连" align=center />
 
 最后预祝大家打包愉悦(<ゝω·)☆~Kira~
 
+
 ## 0x05 旧版kivydev
-***
 
 打包环境下载地址 http://pan.baidu.com/s/1gfgeOT1
 
