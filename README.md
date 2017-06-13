@@ -63,6 +63,9 @@ vbox4.3.12 Extension pack下载地址 https://pan.baidu.com/s/1hsspuIC
 --bootstrap sdl2 
 ```
 
+p4a详细的参数参见pythonforandroid官方文档，我上传了一份到本repo。
+
+
 ## 0x02 py35运行代码
 
 ```
