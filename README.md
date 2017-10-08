@@ -4,10 +4,13 @@
 
 ![](https://img.shields.io/badge/kivy-1.10.1-brightgreen.svg) ![](https://img.shields.io/badge/python-2.7-brightgreen.svg) ![](https://img.shields.io/badge/python-3.5-brightgreen.svg) ![](https://img.shields.io/badge/pythonforandroid-0.5-brightgreen.svg) ![](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
+##写在前面
+
+kivy打包有两种工具，分别是p4a和buildozer，kivydev64使用p4a，kivydev使用buildozer。
+buildozer其实是对p4a做了进一步封装，换汤不换药。如果你不想配置recipe和dist之类的参数，可以使用buildozer，但是每次都要复制已经打包成功的项目目录下的.buildozer到要打包的项目目录下，buildozer才不会重复下载sdk和ndk等。而.buildozer目录通常在1G以上，每个项目目录如果都复制一份，不久就会耗尽虚拟机的硬盘空间。所以推荐使用p4a，也就是kivydev64，这个打包环境也是第一个建立在64位ubuntu的环境。
 
 
 ## 0x00 系统配置
-
 
 打包环境下载地址 http://pan.baidu.com/s/1slweL8T
 
@@ -25,7 +28,6 @@ vbox4.3.12 Extension pack下载地址 https://pan.baidu.com/s/1hsspuIC
 
 
 ## 0x01 打包
-
 
 #### 打包命令
 /home/kivydev/test是测试目录，该目录下的py2apk是py27打包，py3apk是py35打包.无论是哪种版本py打包命令都是一样的,在py2apk或py3apk目录下执行：
@@ -75,7 +77,6 @@ python3  main.py
 
 ## 0x03 更新日志
 
-
 * 使用p4a取代buildozer
 
 * 支持py35打包apk
@@ -97,11 +98,14 @@ python3  main.py
 
 #### 鸣谢
 
-这个打包工具的更新得到了@校长叫我起床 巨佬的大力帮助，在此表示感谢。另外这个工具的更新意见来自目前国内最大最强的kivy中文开发者交流群（534622543）众多群友。欢迎大家使用并将发现的bug和不足告诉我，我会尽量修复。打包环境搭建是个苦差事，谈不上什么技术含量，但是需要足够的耐心和灵光一现的运气。如果你想独自搭建环境，我建议你先通读下PythonforAndroid文档，对每个步骤都反复阅读几遍，不要在搭建过程中遗漏步骤，发现问题先谷歌，谷歌不到的就择日再搭建。
+这个打包工具的更新得到了@校长叫我起床 巨佬的大力帮助，在此表示感谢。另外这个工具的更新意见来自目前国内最大最强的kivy中文开发者交流群（**534622543**）众多群友。欢迎大家使用并将发现的bug和不足告诉我，我会尽量修复。打包环境搭建是个苦差事，谈不上什么技术含量，但是需要足够的耐心和灵光一现的运气。如果你想独自搭建环境，我建议你先通读下PythonforAndroid文档，对每个步骤都反复阅读几遍，不要在搭建过程中遗漏步骤，发现问题先谷歌，谷歌不到的就择日再搭建。
 
 <img src="http://i.imgur.com/CY76Gaj.jpg" width = "300" height = "150" alt="萌新三连" align=center />
 
 最后预祝大家打包愉悦(<ゝω·)☆~Kira~
+
+欢迎大家加入kivy中文开发者交流群 群号：534622543
+<img src="https://i.imgur.com/ptehAit.jpg" width = "300" height = "400" alt="群号：534622543" align=center />
 
 
 ## 0x05 旧版kivydev
