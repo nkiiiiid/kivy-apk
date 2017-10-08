@@ -4,7 +4,7 @@
 
 ![](https://img.shields.io/badge/kivy-1.10.1-brightgreen.svg) ![](https://img.shields.io/badge/python-2.7-brightgreen.svg) ![](https://img.shields.io/badge/python-3.5-brightgreen.svg) ![](https://img.shields.io/badge/pythonforandroid-0.5-brightgreen.svg) ![](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
-##写在前面
+## 写在前面
 
 kivy打包有两种工具，分别是p4a和buildozer，kivydev64使用p4a，kivydev使用buildozer。
 buildozer其实是对p4a做了进一步封装，换汤不换药。如果你不想配置recipe和dist之类的参数，可以使用buildozer，但是每次都要复制已经打包成功的项目目录下的.buildozer到要打包的项目目录下，buildozer才不会重复下载sdk和ndk等。而.buildozer目录通常在1G以上，每个项目目录如果都复制一份，不久就会耗尽虚拟机的硬盘空间。所以推荐使用p4a，也就是kivydev64，这个打包环境也是第一个建立在64位ubuntu的环境。
@@ -105,6 +105,7 @@ python3  main.py
 最后预祝大家打包愉悦(<ゝω·)☆~Kira~
 
 欢迎大家加入kivy中文开发者交流群 群号：534622543
+
 <img src="https://i.imgur.com/ptehAit.jpg" width = "300" height = "400" alt="群号：534622543" align=center />
 
 
