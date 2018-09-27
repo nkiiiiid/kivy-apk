@@ -1,3 +1,186 @@
+# kivydev64 v2.0
+
+----------
+
+打包环境下载地址 **正在施工...**
+
+## 前言
+
+很高兴今天发布全新一代的apk打包环境，经过两周的摸索基本完成了1.0版虚拟机的全面升级。下一步我还将按照计划推进一些bug的修复和疑难问题的解决。今天发布的虚拟机可以正常打包apk，并且支持target sdk version 26以上打包.各位在使用中遇到问题可以直接在issue提出，或者到kivy中国开发者群（群号：**534622543**）向我反馈。
+
+在此，感谢一如既往帮助我，支持我的朋友、大佬们。  
+特别感谢校长大佬@linuxrootok
+
+
+## Goals
+
+- 已经完成  
+    - [x] p4a升级到master分支，消除No such file or directory: 'src/main/assets/private.mp3' bug
+    - [x] kivy升级到master分支，在linux上支持sdl2作为provider运行代码  
+    - [x] ndk升级到r16b，支持api level 27打包
+    - [x] sdk build tools升级到28，支持gradle编译apk  
+
+
+- 未完成  
+    - [ ] 增加recipe
+    - [ ] jnius例子  
+
+
+## 使用说明
+
+### 0x01 为什么是p4a不是buildozer  
+
+buildozer提供了很多自动化的操作，但是在api level 27打包中发生目前没有解决的错误，具体是gradle编译错误，错误回溯如下（我只截取关键部分），这是打包报错后，在.buildozer/android/platform/build/dists/myapp目录下运行下面命令生成的：  
+`./gradlew assembleDebug  --stacktrace --info`  
+
+错误回溯：  
+```
+file or directory '/home/kivydev/builddir/.buildozer/android/platform/build/dists/myapp/src/debug/java', not found
+Compiling with JDK Java compiler API.
+/home/kivydev/builddir/.buildozer/android/platform/build/dists/myapp/src/main/java/org/kivy/android/PythonService.java:97: error: cannot find symbol
+        notification.setLatestEventInfo(context, serviceTitle, serviceDescription, pIntent);
+                    ^
+  symbol:   method setLatestEventInfo(Context,String,String,PendingIntent)
+  location: variable notification of type Notification
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 error
+:compileDebugJavaWithJavac FAILED
+:compileDebugJavaWithJavac (Thread[Daemon worker Thread 11,5,main]) completed. Took 0.417 secs.
+```
+
+### 0x02 打包说明
+
+虚拟机配置和v1.0是一样的，p4a配置文件如下：  
+```
+--dist_name py2dist
+--android_api 27
+--minsdk 19
+--sdk_dir /home/kivydev/andr/android-sdk-linux
+--ndk_dir /home/kivydev/andr/android-ndk-r10e
+--ndk_version 16
+--arch armeabi-v7a
+--requirements python2,kivy
+--private . 
+--package com.myapp.test
+--name py2apk
+--version 1.0 
+--bootstrap sdl2 
+```
+各参数的具体含义可以参考https://github.com/nkiiiiid/kivydev-note  
+对几个参数做下说明：
+- --android_api 
+    打包使用的sdk version，也就是对应到apk的target api level，为了符合谷歌提出的api level>26的商店上架要求，这里设置为27.
+
+- --minsdk
+    最小sdk version，决定了apk兼容的最小安卓版本
+
+- --arch
+    目标平台的cpu架构，包括下面几种：
+    - armeabiv-v7a: 第7代及以上的 ARM 处理器。2011年15月以后的生产的大部分Android设备都使用它。
+    - arm64-v8a: 第8代、64位ARM处理器，例如：三星 Galaxy S6。
+    - armeabi: **默认值**，第5代、第6代的ARM处理器，早期的手机用的比较多。
+    - x86: 平板、模拟器用得比较多。
+
+打包命令：
+
+`p4a apk`
+
+
+
+### 0x03 调试方法 
+ 
+#### 有线调试vs无线调试
+无论有线还是无线都需要一根usb数据线。  
+
+- 有线调试  
+打开手机开发者模式、USB调试。将手机与电脑usb连接，通过电脑上的adb命令就可以获取apk的日志。adb来自[android sdk](http://www.androiddevtools.cn/)的platform tools目录。
+
+    - for win  
+    可以下载[adbkit](http://adbshell.com/downloads)替代。在cmd下运行下面命令获取日志（假设appname为myapp）：
+    `adb logcat | find /i "myapp"`
+
+    - for ubuntu  
+    通过`apt-get install android-tools-adb`安装adb。在终端运行下面命令获取日志： 
+    `adb logcat | grep –i appname`
+
+- 无线调试（手机与电脑必须在同一局域网）
+打开手机wifi，手机设置同上，手机通过usb连接电脑后，运行如下命令，打开手机5555端口用于通讯
+
+    `adb tcpip 5555`
+
+    然后拔掉usb，使用下面命令连接手机ip地址
+
+    `adb connect 192.168.2.102`
+
+    使用adb安装apk
+
+    `adb install -r apk路径`
+
+
+
+#### 关于日志  
+logcat返回的日志信息较少，不够直观，如果apk有运行到loading界面（也就是闪屏）之后的步骤，那么在apk安装目录（/data/data/package name/files/app/.kivy/logs）下会生成log文件，这个文件包含了详细的apk运行过程，对于查找闪退原因等问题帮助很大。以ubuntu平台为例，在终端运行下面命令获取log文件内容（假设package name为com.myapp.test）：
+```
+adb shell       #进入shell
+run-as com.myapp.test
+cd /data/data/com.myapp.test/files/app/.kivy/logs
+ls              #可以看到运行日志
+```
+
+但是某些手机（比如三星）对run-as做了限制不能使用，只能用adb backup备份命令来备份apk的目录，然后使用dd命令（linux命令，对于win来说需要安装cygwin才有该命令，推荐安装MobaXterm，创建本地session会提示下载cygwin插件，装上插件后就可以使用dd命令，MobaXterm是集ssh、telnet、rsh、rdp、vnc、ftp、xdmcp等等功能于一体的工具）去掉头部，使用python的zlib解压后得到tar包。命令如下：
+```
+adb backup -f data.ab com.myapp.test
+
+dd if=data.ab bs=1 skip=24 | python -c "import zlib,sys;sys.stdout.write(zlib.decompress(sys.stdin.read()))" > data.tar
+```
+或者zlib解压后直接解压
+
+`dd if=data.ab bs=1 skip=24 | python -c "import zlib,sys;sys.stdout.write(zlib.decompress(sys.stdin.read()))" | tar -xvf -`
+
+也可以使用openssl的zlib解压，不过我的ubuntu openssl并没有支持zlib。 
+
+`dd if=data.ab  bs=1 skip=24 | openssl zlib -d > data.tar`
+
+
+**adb backup非常锋利，是个大杀器，可以备份所有apk的安装目录，如果apk的账号密码是明文保存，那么一旦获取到安装目录也就获取了apk中的账号密码，一些充电站要求打开手机开发者模式和usb调试基本是用这个套路获取用户账号信息的。**
+
+
+### 0x04 如何自己修改打包环境  
+
+说明下打包有关配置含义。
+apk打包需要sdk、ndk、ant，其中[sdk、ndk](http://www.androiddevtools.cn/)下载后放在/home/kivydev/andr，ant是通过synaptic安装的，位于/usr/share。
+
+#### sdk  
+sdk版本（即api level）和ndk版本通常要同步上调才能保证打包成功。具体是你所使用的sdk version也就是sdk\platform下的目标版本必须在ndk\platform有对应的版本。  
+比如kivydev64 v1.0使用的版本对应是：  
+sdk19，ndk10e。这是对应安卓4.4.2平台，在更高版本的安卓手机可能不能运行。  
+现在v2.0使用的版本是  
+sdk27，ndkr16b。这是对应安卓8.1平台。
+
+p4a配置文件的android_api就是sdk version，在编译脚本中将该参数同时作为compile sdk version和target sdk version。
+
+#### api level与android版本对应图  
+![](https://i.imgur.com/UPMS9SM.png)
+
+
+#### p4a结构  
+p4a位于/home/kivydev/.local/lib/python2.7/site-packages/  
+p4a编译生成的build、dists位于/home/kivydev/.local/share/python-for-android/  
+
+清除builds、dists命令：  
+
+`p4a clean_builds && p4a clean_dists`
+
+不要清除builds，因为目前打包环境使用sdk 27打包其实是采取一种曲线打包方式，具体过程是先用sdk 19（android_api为19）打包后再删除dist保留sdk 19的build，再用sdk 27打包，这样apk target api就是 27，并且可以在安卓4.4以上正常运行。并且这个步骤只要执行一次，以后打包任何其他sdk版本，都只要直接修改android_api为目标版本然后打包即可，不需要先用sdk 19打包。但是如果将builds清理掉，那么打包时要按上面步骤执行一次生成sdk 19的build。
+
+
+
+### 0x05 Q&A
+
+
+
+
 # kivydev64 v1.0
 
 ![](https://img.shields.io/badge/ubuntu-16.04-orange.svg) ![](https://img.shields.io/badge/xfce-v4-orange.svg)
@@ -136,11 +319,11 @@ vbox4.3.12 Extension pack下载地址 https://pan.baidu.com/s/1hsspuIC
 ```
 buildozer init      #生成buildozer.spec配置文件，这个配置文件包括各种apk的配置
 ```
-这里我对原始的bulldozer.spec配置文件做了修改（原始spec文件位于/usr/local/lib/python2.7/dist-packages/buildozer/default.spec/default.spec）修改的内容有：
-注释掉ln16，默认包含项目目录下的所有文件
-ln39，增加python2，没有这项打包时会出现找不到hostPython错误。
-ln180，改为2
-ln183，改为0
+这里我对原始的bulldozer.spec配置文件做了修改（原始spec文件位于/usr/local/lib/python2.7/dist-packages/buildozer/default.spec/default.spec）修改的内容有：  
+注释掉ln16，默认包含项目目录下的所有文件。  
+ln39，增加python2，没有这项打包时会出现找不到hostPython错误。  
+ln180，改为2  
+ln183，改为0  
 
 ```
 buildozer android_new debug     #生成debug版本apk
