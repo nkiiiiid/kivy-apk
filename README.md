@@ -193,6 +193,23 @@ p4a编译生成的build、dists位于/home/kivydev/.local/share/python-for-andro
 
 ### 0x05 Q&A
 
+Q:道理我都懂，可是打包环境怎么这么大（越来越大）？  
+A:可能它觉得大点比较有存在感:smile:
+
+Q:万事俱备，就差怎么入门kivy？  
+A:kivy的书籍不多，可以看这本入门kivy-interactive-applications-in-python，它关于界面的写法习惯非常值得借鉴。
+
+Q:是否有打算写个kivy教程？  
+A:我的手有自己的想法，哪天我问问。
+
+Q:kivy有商业应用吗？  
+A:目前没看到，你可以做第一个。
+
+Q:kivy太冷门，不如用原生。
+A:见仁见智，兴趣使然。
+
+final，能帮助萌新降低学习门槛就足够了。  
+
 
 
 
@@ -288,7 +305,7 @@ python3  main.py
 
 ## 0x04 说明
 
-#### 关于apk兼容性
+#### 关于apk兼容性(已经在kivydev64v2.0解决）
 
 之前的buildozer打包出来的apk有的不能在安卓6、7的某些机型上面运行，要解决这个问题还需要大量测试，江湖传说API level 19兼容最好，所以我就用了19，有安卓6和7手机的可以打包试试看，如果不能运行务必反馈给我机型和安卓系统版本。
 
