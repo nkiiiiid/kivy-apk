@@ -92,7 +92,7 @@ Note: Recompile with -Xlint:deprecation for details.
 
 - --arch
     目标平台的cpu架构，包括下面几种：
-    - armeabiv-v7a: 第7代及以上的 ARM 处理器。2011年15月以后的生产的大部分Android设备都使用它。
+    - armeabi-v7a: 第7代及以上的 ARM 处理器。2011年15月以后的生产的大部分Android设备都使用它。
     - arm64-v8a: 第8代、64位ARM处理器，例如：三星 Galaxy S6。
     - armeabi: **默认值**，第5代、第6代的ARM处理器，早期的手机用的比较多。
     - x86: 平板、模拟器用得比较多。
@@ -205,7 +205,11 @@ p4a编译生成的build、dists位于/home/kivydev/.local/share/python-for-andro
 ## 写在前面
 
 kivy打包有两种工具，分别是p4a和buildozer，kivydev64使用p4a，kivydev使用buildozer。
-buildozer其实是对p4a做了进一步封装，换汤不换药。如果你不想配置recipe和dist之类的参数，可以使用buildozer，但是每次都要复制已经打包成功的项目目录下的.buildozer到要打包的项目目录下，buildozer才不会重复下载sdk和ndk等。而.buildozer目录通常在1G以上，每个项目目录如果都复制一份，不久就会耗尽虚拟机的硬盘空间。所以推荐使用p4a，也就是kivydev64，这个打包环境也是第一个建立在64位ubuntu的环境。
+buildozer其实是对p4a做了进一步封装，换汤不换药。如果你不想配置recipe和dist之类的参数，可以使用buildozer，<del>但是每次都要复制已经打包成功的项目目录下的.buildozer到要打包的项目目录下，buildozer才不会重复下载sdk和ndk等。而.buildozer目录通常在1G以上，每个项目目录如果都复制一份，不久就会耗尽虚拟机的硬盘空间。所以推荐使用p4a，也就是kivydev64.</del>  buildozer.spec文件的build_dir参数可以设定.buildozer的路径。
+
+`build_dir = /root/.buildozer`
+
+这个打包环境是第一个建立在64位ubuntu的环境。
 
 
 ## 0x00 系统配置
