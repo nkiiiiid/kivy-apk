@@ -2,7 +2,22 @@
 
 ----------
 
-打包环境下载地址 **正在施工...**
+#### 打包环境下载地址 https://pan.baidu.com/s/1K5SRPxMX2iZIaMZcUWpt3w
+
+Vbox4.3.12下载地址 https://pan.baidu.com/s/1c2Ol81E
+
+vbox4.3.12 Extension pack下载地址 https://pan.baidu.com/s/1hsspuIC
+
+系统 Ubuntu 16.04 64位 
+
+用户名 kivydev 密码 kivydev 
+
+用户名root  密码  root  
+
+已安装增强工具，支持共享文件夹、分辨率调整、宿主机与虚拟机复制粘贴
+
+![](https://i.imgur.com/3xJTNCJ.png)
+
 
 ## 前言
 
