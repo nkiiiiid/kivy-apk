@@ -101,6 +101,7 @@ Note: Recompile with -Xlint:deprecation for details.
 
 `p4a apk`
 
+打包前，先删除/home/kivydev/.local/share/python-for-android/下的builds和dists，先用sdk 19（android_api为19）打包后再删除dist保留sdk 19的build，再用sdk 27打包，这样apk target api就是 27，并且可以在安卓4.4以上正常运行。并且这个步骤对于同一个app只要执行一次，以后打包这个app的任何其他sdk版本，都只要直接修改android_api为目标版本然后打包即可，不需要先用sdk 19打包。
 
 
 ### 0x03 调试方法 
@@ -187,7 +188,7 @@ p4a编译生成的build、dists位于/home/kivydev/.local/share/python-for-andro
 
 `p4a clean_builds && p4a clean_dists`
 
-不要清除builds，因为目前打包环境使用sdk 27打包其实是采取一种曲线打包方式，具体过程是先用sdk 19（android_api为19）打包后再删除dist保留sdk 19的build，再用sdk 27打包，这样apk target api就是 27，并且可以在安卓4.4以上正常运行。并且这个步骤只要执行一次，以后打包任何其他sdk版本，都只要直接修改android_api为目标版本然后打包即可，不需要先用sdk 19打包。但是如果将builds清理掉，那么打包时要按上面步骤执行一次生成sdk 19的build。
+
 
 
 
