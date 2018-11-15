@@ -211,7 +211,9 @@ A:见仁见智，兴趣使然。
 
 final，能帮助萌新降低学习门槛就足够了。  
 
+#### **大佬们救救孩子吧，现在可以捐助作者了，捐助我有机会看到更多教程。**
 
+<img src="https://i.imgur.com/94DkJbs.jpg" width = "600" height = "350" alt="捐助up" align=center />
 
 
 # kivydev64 v1.0
