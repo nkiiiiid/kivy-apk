@@ -63,9 +63,8 @@ apt源可以通过新立得调整为阿里云或者其他国内源。
 
 在运行出现下面输出时直接关闭终端，再次运行上面的命令即可。
 
+![imga](https://raw.githubusercontent.com/nkiiiiid/kivy-apk/master/imga.png)
 
-
-![output image][imga]
 
 升级完毕后重启虚拟机，在项目目录下运行打包命令：
 
