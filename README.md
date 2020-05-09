@@ -14,6 +14,8 @@
 
 需要下载的文件地址 https://cloud.189.cn/t/Q732eyRFV7zm (访问码:5dhz)
 
+ndk下载地址 https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip?hl=zh_cn
+
 将ndk、ant-1.9.4、python37、kivymd解压到/home/kivydev/andr下
 
 buildozer解压到/home/kivydev/test下
@@ -24,7 +26,7 @@ kdpp放到/home/kivydev/andr下运行命令
 
 ### 0x01升级前的一些建议
 
-如果你的网络足够好，那么就不需要按下面的建议配置pip源、apt源和代理。
+如果你的网络足够好，那么就跳过这一部分内容。
 
 #### 配置pip源
 
