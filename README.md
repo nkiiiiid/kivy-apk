@@ -4,6 +4,7 @@
 
 - 已经完成  
     - [x] 采用buildozer 
+    - [x] 编译安装了python37 
     - [x] kivy升级到最新稳定版  
     - [x] ndk升级到r19c 
     - [x] jnius、matplotlib、numpy打包测试通过 
