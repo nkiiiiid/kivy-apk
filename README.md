@@ -12,6 +12,8 @@
 
 这次5.0升级采用脚本升级法，在kivydev64 v2.0虚拟机上使用kdpp直接升级，升级之前需要下载一些文件放到指定目录，并且安装kdpp。
 
+**注意** 以下所有文件解压请在虚拟机上进行，不要在windows下解压，在虚拟机可以用unzip命令解压也可以直接双击打开压缩包然后点extract解压。
+
 需要下载的文件地址 https://cloud.189.cn/t/Q732eyRFV7zm (访问码:5dhz)
 
 ndk下载地址 https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip?hl=zh_cn
@@ -68,13 +70,17 @@ apt源可以通过新立得调整为阿里云或者其他国内源。
 ![imga](https://raw.githubusercontent.com/nkiiiiid/kivy-apk/master/imga.png)
 
 
-升级完毕后重启虚拟机，在项目目录下运行打包命令：
+## ======升级完毕后重启虚拟机======
+
+默认打包python3代码，python2没有测试，可以在buildozer.spec中修改。在项目目录下运行打包命令：
 
 `kdpp go`
 
 等同于
 
 `buildozer android debug`
+
+第一次打包使用kdpp go生成我修改过的spec文件，之后可以用buildozer命令，等价的。打包的代码如果包含jnius或者其他第三方库，请修改spec文件添加对应第三方库到requirement，再打包。
 
 在打包一个项目后，要打包其他项目时，先运行清理环境命令:
 
