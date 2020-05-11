@@ -2,6 +2,8 @@
 
 ----------
 
+## Goals
+
 - 已经完成  
     - [x] 采用buildozer 
     - [x] 编译安装了python37 
@@ -9,7 +11,16 @@
     - [x] ndk升级到r19c 
     - [x] jnius、matplotlib、numpy打包测试通过 
 
+这次提供两种升级方法，第一种是直接下载完整的5.0镜像，第二种是在2.0镜像上通过脚本升级。网络不好的开发者建议使用第一种方法。
 
+## kivydev64 5.0 镜像下载
+
+ ![imga](https://raw.githubusercontent.com/nkiiiiid/kivy-apk/master/kivydev.png)
+
+**镜像下载地址** 上传中
+
+
+## 脚本升级法
 
 这次5.0升级采用脚本升级法，在kivydev64 v2.0虚拟机上使用kdpp直接升级，升级之前需要下载一些文件放到指定目录，并且安装kdpp。
 
