@@ -17,7 +17,7 @@
 
  ![imga](https://raw.githubusercontent.com/nkiiiiid/kivy-apk/master/kivydev.png)
 
-**镜像下载地址** 上传中
+**镜像下载地址** https://cloud.189.cn/t/NnyeQjnEjANr (访问码:1ha9)
 
 
 ## 脚本升级法
