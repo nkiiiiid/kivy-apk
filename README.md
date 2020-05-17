@@ -11,16 +11,16 @@
     - [x] ndk升级到r19c 
     - [x] jnius、matplotlib、numpy打包测试通过 
 
-这次提供两种升级方法，第一种是直接下载完整的5.0镜像，第二种是在2.0镜像上通过脚本升级。网络不好的开发者建议使用第一种方法。
+### 这次提供两种升级方法，第一种是直接下载完整的5.0镜像，第二种是在2.0镜像上通过脚本升级。网络不好的开发者建议使用第一种方法。
 
-## kivydev64 5.0 镜像下载
+## 0X1 kivydev64 5.0 镜像下载
 
  ![imga](https://raw.githubusercontent.com/nkiiiiid/kivy-apk/master/kivydev.png)
 
 **镜像下载地址** https://cloud.189.cn/t/NnyeQjnEjANr (访问码:1ha9)
 
 
-## 脚本升级法
+## 0X2 脚本升级法
 
 这次5.0升级采用脚本升级法，在kivydev64 v2.0虚拟机上使用kdpp直接升级，升级之前需要下载一些文件放到指定目录，并且安装kdpp。
 
@@ -38,7 +38,7 @@ kdpp放到/home/kivydev/andr下运行命令
 
 `pip install kdpp-2.0-py2-none-any.whl`
 
-### 0x01 升级前的一些建议
+### 0x21 升级前的一些建议
 
 如果你的网络足够好，那么就跳过这一部分内容。
 
@@ -71,7 +71,7 @@ use_proxy = on
 apt源可以通过新立得调整为阿里云或者其他国内源。
 
 
-### 0x02 升级
+### 0x22 升级
 
 在~/andr下运行命令，命令运行过程中会需要输入几次回车：
 
@@ -83,6 +83,8 @@ apt源可以通过新立得调整为阿里云或者其他国内源。
 
 
 ## ======升级完毕后重启虚拟机======
+
+## 0X3 打包说明
 
 默认打包python3代码，python2没有测试，可以在buildozer.spec中修改。在项目目录下运行打包命令：
 
@@ -111,7 +113,7 @@ apt源可以通过新立得调整为阿里云或者其他国内源。
 `buildozer android release`
 
 
-### 0x03 spec文件说明
+### 0x4 spec文件说明
 
 buildozer打包依靠buildozer.spec配置参数。下面简要说明下主要参数：
 
